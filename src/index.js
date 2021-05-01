@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Routs from './routs'
-import Main from './componets/main/main.js';
 
 ReactDOM.render(
   <React.StrictMode>
     <Routs/>
-    <Main/>
   </React.StrictMode>,
   document.getElementById('root')
 );
