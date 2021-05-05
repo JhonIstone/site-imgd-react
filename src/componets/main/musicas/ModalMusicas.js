@@ -3,23 +3,28 @@ import React from 'react'
 import { Button } from 'react-bootstrap';
 import {useState} from 'react'
 import firebase from '../../../fireBaseConnection'
-import { Toast } from 'bootstrap';
+import {toast} from 'react-toastify'
 
 const ModalMusicas = ({onClose = () => {}}) => {
 
     const [musica, setMusica] = useState()
 
-    async function addMusica(){
+    function addMusica(){
             const title = document.getElementById('txtTitle').value
             const frame = document.getElementById('txtUrl').value
             const lyric = document.getElementById('txtLyric').value
-        setMusica({
-            curtidas: 0,
-            title: document.getElementById('txtTitle').value,
-            frame: document.getElementById('txtUrl').value,
-            lyric: document.getElementById('txtLyric').value
-        })
+            const filterFrame = frame.slice(frame+2, frame+16)
 
+        setMusica({
+            curtidas: "0",
+            title: title,
+            frame: filterFrame,
+            lyric: lyric
+        })
+        uploadMusica()
+    }
+
+    async function uploadMusica(){
         await firebase.firestore().collection('musicas')
             .add({
                 curtidas: musica.curtidas,
@@ -28,10 +33,10 @@ const ModalMusicas = ({onClose = () => {}}) => {
                 lyric: musica.lyric
             })
             .then(()=>{
-                Toast.success('Musica adicionada com sucesso');
+                toast.success('Musica adicionada');
             })
-            .cathc((error)=>{
-                Toast.error('Erro ao adicionar a musica');
+            .catch(()=>{
+                toast.error('Erro ao adicionar musica');
             })
     }
   

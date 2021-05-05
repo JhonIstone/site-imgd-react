@@ -1,3 +1,7 @@
+.navLink.Musicas.Active{
+    text-decoration: underline;
+}
+
 .mainMusics{
     margin: 0 10px;
 }
