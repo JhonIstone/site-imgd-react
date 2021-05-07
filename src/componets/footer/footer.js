@@ -4,7 +4,7 @@ import './footer.css'
 export default function footer(){
     return (
         <footer>
-            <img src={Logo} alt='Logo' className='logoFooter'/>
+            <h2>Footer</h2>
         </footer>
     )
 }
