@@ -2,8 +2,7 @@ import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
   } from "react-router-dom";
 
 import Musicas from './componets/main/musicas/Musicas'
@@ -20,6 +19,5 @@ export default function mainRoutes() {
                 <Route path="/Noticias" element={<Noticias/>}/>
             </Switch>
         </Router>
-        
     );
 }

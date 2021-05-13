@@ -23,7 +23,7 @@ export default function Header() {
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link href="/Noticias" eventKey="link-3">
-                        <Link to="/Noticias" className='navLink Novidades'>Novidades</Link>
+                        <a href="/Noticias" className='navLink Novidades'>Novidades</a>
                     </Nav.Link>
                 </Nav.Item>
             </Nav>
