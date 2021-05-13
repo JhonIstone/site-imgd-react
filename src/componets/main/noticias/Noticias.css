@@ -1,3 +1,19 @@
-.navLink.Noticias.Active{
+.navLink.Novidades.Active{
     text-decoration: underline;
+}
+
+#mainNoticias{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.headerNovidades{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post{
+    width: 400px;
 }

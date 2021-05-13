@@ -14,7 +14,26 @@
     background-color: #e9e9e9;
 }
 
+.cardMusic{
+    margin: 0 10px;
+}
+
+.linkTitle{
+    color: black;
+}
+.linkTitle:hover{
+    text-decoration: none;
+}
+
 section iframe{
     width: 400px;
     height: 200px;
+}
+
+section h4{
+    text-transform: capitalize;
+}
+
+section h4:hover{
+    cursor: pointer;
 }
