@@ -1,3 +1,57 @@
+.footerContainer{
+    background-color: black;
+    margin-top: 2%;
+}
+
+.footerContainer, p a{
+    color: white;
+}
+.footerContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.leftFooter{
+    display: flex;
+    flex-direction: column;
+}
+
 .logoFooter{
-    
+    width: 350px;
+    margin: 30px 20px;
+}
+
+.copyright{
+    margin: 20px 30px;
+}
+
+.rightFooter{
+    display: flex;
+    flex-direction: column;
+}
+
+.logoRedes{
+    object-fit: contain;
+    max-width: 20px;
+
+    margin: 0 5px;
+}
+
+.containerRede{
+    display: flex;
+    flex-direction: row;
+
+    margin: 2px 10px;
+}
+
+.containerRede p{
+    margin: auto;
+}
+
+.link:hover{
+    color: grey;
+    font-size: 20px;
+    text-decoration: none;
 }
