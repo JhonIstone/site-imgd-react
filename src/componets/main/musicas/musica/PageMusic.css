@@ -4,5 +4,55 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+}
+
+.buttonVoltar{
+    float: right;
+
+    width: 100px;
+    margin: 10px 0;
+}
+
+.infos-music{
+    margin: 0 20px;
+}
+
+.frameMusic{
+    margin: 0 0 25px 0;
+}
+
+.infos-music p{
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+
+    font-style: oblique;
+    font-variant-caps: all-small-caps;
+    font-size: x-large;
+
+    padding: 0 10px;
+}
+
+.lyric-music{
+    margin: 0 20px;
+    background-color: black;
+    opacity: 0.6;
+
+    width: 50%;
+    height: 50%;
+
+    text-align: center;
+
+    font-style: oblique;
+    font-size: x-large;
+}
+
+.lyric-div{
+    padding: 2%;
+}
+
+.lyric-music pre{
+    white-space: pre-line;
+    color: white;
 }

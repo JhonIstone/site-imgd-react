@@ -25,7 +25,7 @@ function App(){
                 <Route path="/Noticias">
                     <Noticias/>
                 </Route>
-                <Route path="/Fotos">
+                <Route path="/Fotos" element={<Fotos/>}>
                     <Fotos/>
                 </Route>
             </Switch>

@@ -90,7 +90,7 @@ export default function Musicas(){
         <main className='mainMusics'>
             {pageMusic ? (
                 <Music title={musicForPage.title} lyric={musicForPage.lyric} iframe={musicForPage.iframe} 
-                album={musicForPage.album}/>
+                album={musicForPage.album} onClose={() => setPageMusic(false)}/>
                 ) 
                 :
                 <>
@@ -104,29 +104,30 @@ export default function Musicas(){
                         loop={true} loopFillGroupWithBlank={true} pagination={{
                         "clickable": true}} navigation={true} className="mySwiper">
                             {allMusicsEvolve.map((allMusicsEvolve) => {
-                                return (
-                                    <SwiperSlide>
-                                        <div id='cardMusic'>
-                                            <h4 className='titleMusic' onClick={() => {
-                                                setPageMusic(true)
-                                                setMusicForPage({title: allMusicsEvolve.title, 
-                                                    lyric: allMusicsEvolve.lyric, 
-                                                    iframe: allMusicsEvolve.iframe, 
-                                                    album: 'evolve'})
-                                                }}>
-                                                {allMusicsEvolve.title}
-                                            </h4>
-                                            <iframe className='frameMusic' 
-                                                src={`https://www.youtube.com/embed/${allMusicsEvolve.iframe}`}
-                                                title="YouTube video player" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; 
-                                                encrypted-media; gyroscope; picture-in-picture">
-                                            </iframe>
-                                            <p>{allMusicsEvolve.curtidas} Curtidas</p>
-                                        </div>
-                                    </SwiperSlide>
-                                );
-                            })}
+                                    return (
+                                        <SwiperSlide>
+                                            <div id='cardMusic'>
+                                                <h4 className='titleMusic' onClick={() => {
+                                                    setPageMusic(true)
+                                                    setMusicForPage({title: allMusicsEvolve.title, 
+                                                        lyric: allMusicsEvolve.lyric, 
+                                                        iframe: allMusicsEvolve.iframe, 
+                                                        album: 'evolve'})
+                                                    }}>
+                                                    {allMusicsEvolve.title}
+                                                </h4>
+                                                <iframe className='frameMusic' 
+                                                    src={`https://www.youtube.com/embed/${allMusicsEvolve.iframe}`}
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; 
+                                                    encrypted-media; gyroscope; picture-in-picture">
+                                                </iframe>
+                                                <p>{allMusicsEvolve.curtidas} Curtidas</p>
+                                            </div>
+                                        </SwiperSlide>
+                                    );
+                                })
+                            }
                         </Swiper>
                     </section>
                     
@@ -139,30 +140,30 @@ export default function Musicas(){
                         <Swiper slidesPerView={3} spaceBetween={60} slidesPerGroup={1} 
                         loop={true} loopFillGroupWithBlank={true} pagination={{
                         "clickable": true}} navigation={true} className="mySwiper">
-                            {allMusicsOrigins.map((allMusicsOrigins) => {
-                                return (
-                                    <SwiperSlide>
-                                        <div id='cardMusic'>
-                                            <h4 className='titleMusic' 
-                                                onClick={() => {
-                                                setPageMusic(true)
-                                                setMusicForPage({title: allMusicsOrigins.title, 
-                                                    lyric: allMusicsOrigins.lyric, 
-                                                    iframe: allMusicsOrigins.iframe, 
-                                                    album: 'origins'})
-                                                }
-                                            }>
-                                                {allMusicsOrigins.title}
-                                            </h4>
-                                            <iframe className='frameMusic' src={`https://www.youtube.com/embed/${allMusicsOrigins.iframe}`}
-                                                title="YouTube video player" frameborder="0" 
-                                                allow="accelerometer; autoplay; clipboard-write; 
-                                                encrypted-media; gyroscope; picture-in-picture">
-                                            </iframe>
-                                            <p>{allMusicsOrigins.curtidas} Curtidas</p>
-                                        </div>
-                                    </SwiperSlide>
-                                );
+                        {allMusicsOrigins.map((allMusicsOrigins) => {
+                                    return (
+                                        <SwiperSlide>
+                                            <div id='cardMusic'>
+                                                <h4 className='titleMusic' 
+                                                    onClick={() => {
+                                                    setPageMusic(true)
+                                                    setMusicForPage({title: allMusicsOrigins.title, 
+                                                        lyric: allMusicsOrigins.lyric, 
+                                                        iframe: allMusicsOrigins.iframe, 
+                                                        album: 'origins'})
+                                                    }
+                                                }>
+                                                    {allMusicsOrigins.title}
+                                                </h4>
+                                                <iframe className='frameMusic' src={`https://www.youtube.com/embed/${allMusicsOrigins.iframe}`}
+                                                    title="YouTube video player" frameborder="0" 
+                                                    allow="accelerometer; autoplay; clipboard-write; 
+                                                    encrypted-media; gyroscope; picture-in-picture">
+                                                </iframe>
+                                                <p>{allMusicsOrigins.curtidas} Curtidas</p>
+                                            </div>
+                                        </SwiperSlide>
+                                    );
                             })}
                         </Swiper>
                     </section>
