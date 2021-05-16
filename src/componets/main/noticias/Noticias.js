@@ -102,29 +102,31 @@ export default function Noticias(){
                     </Button>
                 </div>
             </header>
-            <main id='mainNoticias'>
-                {posts.map((post) => {
-                    if(post.rede === 'twitter'){
-                        return (
-                            <div className='post'>
-                                <h2>{post.title}</h2>
-                                <blockquote class="twitter-tweet">
-                                    <a href={`https://twitter.com/idupdatesbra/${post.iframe}?ref_src=twsrc%5Etfw`}/>
-                                </blockquote>
-                            </div>
-                        );
-                    }
-                    else if (post.rede === 'insta'){
-                        return (
-                            <div className='post'>
-                                <h2>{post.title}</h2>
-                                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`} data-instgrm-version="13">
-                                    <a href={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`}/>
-                                </blockquote>
-                            </div>
-                        )
-                    }
-                })}
+            <main>
+                <div className='noticias'>
+                    {posts.map((post) => {
+                        if (post.rede === 'twitter') {
+                            return (
+                                <div className='post'>
+                                    <h4>{post.title}</h4>
+                                    <blockquote class="twitter-tweet">
+                                        <a href={`https://twitter.com/idupdatesbra/${post.iframe}?ref_src=twsrc%5Etfw`} />
+                                    </blockquote>
+                                </div>
+                            );
+                        }
+                        else if (post.rede === 'insta') {
+                            return (
+                                <div className='post'>
+                                    <h4>{post.title}</h4>
+                                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`} data-instgrm-version="13">
+                                        <a href={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`} />
+                                    </blockquote>
+                                </div>
+                            )
+                        }
+                    })}
+                </div>
             </main>
                 <Modal show={show} onHide={handleClose} animation={false}>
                     <Modal.Header closeButton>

@@ -2,18 +2,30 @@
     text-decoration: underline;
 }
 
-#mainNoticias{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
 .headerNovidades{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+.headerNovidades h1{
+    margin: 10px 20px;
+}
+
+.noticias{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
 .post{
     width: 400px;
+    margin: 10px 10px;
+}
+
+.post h4{
+    text-align: justify;
+    text-transform: capitalize;
 }
