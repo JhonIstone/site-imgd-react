@@ -1,5 +1,5 @@
 import './header.css'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
 import Nav from 'react-bootstrap/Nav'
 import BackgroundHeader from '../../assets/back.png'
@@ -12,19 +12,19 @@ export default function Header() {
             <Nav className='justify-content-end' variant="pílulas" defaultActiveKey="/">
                 <img src={Logo} alt='Logo site' className='logoHeader'/>
                 <Nav.Item>
-                    <Nav.Link href="/Musicas" eventKey="link-1">
+                    <NavLink className='nav-link' to="/Musicas" eventKey="link-1">
                         <Link to="/Musicas" className='navLink Musicas'>Musicas</Link>
-                    </Nav.Link>
+                    </NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="/Fotos" eventKey="link-2">
+                    <NavLink className='nav-link' to="/Fotos" eventKey="link-2">
                         <Link to="/Fotos" className='navLink Fotos'>Fotos</Link>
-                    </Nav.Link>
+                    </NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="/Noticias" eventKey="link-3">
-                        <a href="/Noticias" className='navLink Novidades'>Novidades</a>
-                    </Nav.Link>
+                    <NavLink className='nav-link' to="/Noticias" eventKey="link-3">
+                        <Link to="/Noticias" className='navLink Novidades'>Novidades</Link>
+                    </NavLink>
                 </Nav.Item>
             </Nav>
             {/*Fim Barra de menu */}

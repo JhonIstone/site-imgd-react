@@ -35,7 +35,7 @@ export default function Noticias(){
         return adjustedLink
     }
 
-    async function upNewMusic(){
+    async function upNewPost(){
         let title = document.getElementById('formTitle').value
         let iframe = document.getElementById("formLink").value
         let rede
@@ -73,11 +73,22 @@ export default function Noticias(){
         })
     }
 
+    function loadScripts(src){
+        var script = document.createElement('script')
+        script.async = true
+        script.src = src
+
+        document.querySelector('body').appendChild(script)
+    }
+
     useEffect(()=>{
         document.querySelector('.navLink.Fotos').classList.remove('Active')
         document.querySelector('.navLink.Musicas').classList.remove('Active')
         document.querySelector('.navLink.Novidades').classList.add('Active')
 
+        loadScripts("https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0")
+        loadScripts("https://platform.twitter.com/widgets.js")
+        loadScripts("//www.instagram.com/embed.js")
         loadPosts()
     }, [])
     
@@ -134,7 +145,7 @@ export default function Noticias(){
                         <Button variant="outline-danger" onClick={handleClose}>
                             Cancelar
                         </Button>
-                        <Button type='submit' variant="outline-success" onClick={() => upNewMusic()}>
+                        <Button type='submit' variant="outline-success" onClick={() => upNewPost()}>
                             Adicionar
                         </Button>
                     </Modal.Footer>
