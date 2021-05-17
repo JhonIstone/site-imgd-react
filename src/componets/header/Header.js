@@ -10,7 +10,10 @@ export default function Header() {
         <header className='container-header'>
             {/* Barra de menu */}
             <Nav className='justify-content-end' variant="pílulas" defaultActiveKey="/">
-                <img src={Logo} alt='Logo site' className='logoHeader'/>
+                <Link to="/Musicas" className='logoHeader'>
+                    <img src={Logo} alt='Logo site' className='logoHeader'>
+                    </img>
+                </Link>
                 <Nav.Item>
                     <NavLink className='nav-link' to="/Musicas" eventKey="link-1">
                         <Link to="/Musicas" className='navLink Musicas'>Musicas</Link>
@@ -48,7 +51,7 @@ export default function Header() {
                         alt="Second slide"
                     />
                     <Carousel.Caption>
-                        <h1>OUTRO TEXTO PASSANDO SEILA TO SEM CRIATIVIDADE S2</h1>
+                        <h1>AS NOVIDADES DA SUA BANDA FAVORITA VOCE VÊ PRIMEIRO AQUI</h1>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

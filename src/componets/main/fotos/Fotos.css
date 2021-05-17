@@ -1,3 +1,48 @@
 .navLink.Fotos.Active{
     text-decoration: underline;
 }
+
+.buttonGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.buttonGroup button{
+    margin: 5px 20px;
+}
+
+.galery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    margin: 5px 20px;
+}
+
+.cardImage img{
+    max-width: 500px;
+    object-fit: cover;
+
+    margin: 20px;
+}
+
+.cardImage img:hover{
+    position: relative;
+
+    max-width: 700px;
+    box-shadow: 20px 10px;
+}
+
+.scrollTop{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    margin: 0 20px 0 0;
+}
+
+.seta{
+    transform: rotate(-90deg);
+}

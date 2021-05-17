@@ -24,7 +24,6 @@ export default function Musicas(){
 
     const [pageMusic, setPageMusic] = useState(false)
     const [musicForPage, setMusicForPage] = useState(null)
-
     const [lgShow, setLgShow] = useState(false);
 
     function adjustLink(link){
@@ -32,7 +31,7 @@ export default function Musicas(){
         index = link.indexOf('v=')
 
         let adjustedLink
-        adjustedLink = link.slice(index+2, index+16)
+        adjustedLink = link.slice(index+2, index+13)
         return adjustedLink
     }
     async function upNewMusic(){
@@ -49,19 +48,15 @@ export default function Musicas(){
             iframe: link,
             lyric: lyric
         })
-        .then(() => {
-            alert("Adicionado")
-        })
         .catch((error) => {
-            console.log(error)
+            alert(error)
         })
-
         setLgShow(false)
     }
     async function loadMusics(album) {
         await firebase.firestore().collection(album)
         .onSnapshot((music) => {
-            let temp = [];
+            let temp = []; 
             music.forEach((music) => {
                 temp.push({
                     curtidas: music.data().curtidas,
@@ -178,33 +173,31 @@ export default function Musicas(){
                             <Modal.Title id="example-modal-sizes-title-lg">Nova Musica</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            
-                        <Form>
-                            <Form.Group controlId="exampleForm.ControlInput1">
-                                <Form.Label>Titulo da musica</Form.Label>
-                                <Form.Control id='formTitle' type="text" placeholder="Bad Liar" required/>
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlInput1">
-                                <Form.Label>Link da musica</Form.Label>
-                                <Form.Control id='formLink' type="text" 
-                                placeholder="https://www.youtube.com/watch?v=k3zimSRKqNw&ab_" required/>
-                            </Form.Group>
-                            <Form.Row className="align-items-center">
-                                <Form.Label>Album</Form.Label>
-                                <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom required>
-                                        <option value="evolve">Evolve</option>
-                                        <option value="origins">Origins</option>
-                                </Form.Control>
-                            </Form.Row>
-                            <Form.Group controlId="exampleForm.ControlTextarea1">
-                                <Form.Label>Letra da musica</Form.Label>
-                                <Form.Control id='formLyric' as="textarea" rows={8} 
-                                placeholder="Insira a letra da musica" resize='none' required/>
-                            </Form.Group>
-                            <Button variant="outline-danger" size="lg" block onClick={() => setLgShow(false)}>Cancelar</Button>
-                            <Button variant="outline-success" size="lg" block onClick={() => upNewMusic()}>Adicionar</Button>
-                        </Form>
-
+                            <Form>
+                                <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Titulo da musica</Form.Label>
+                                    <Form.Control id='formTitle' type="text" placeholder="Bad Liar" required/>
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Link da musica</Form.Label>
+                                    <Form.Control id='formLink' type="text" 
+                                    placeholder="https://www.youtube.com/watch?v=k3zimSRKqNw&ab_" required/>
+                                </Form.Group>
+                                <Form.Row className="align-items-center">
+                                    <Form.Label>Album</Form.Label>
+                                    <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom required>
+                                            <option value="evolve">Evolve</option>
+                                            <option value="origins">Origins</option>
+                                    </Form.Control>
+                                </Form.Row>
+                                <Form.Group controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Letra da musica</Form.Label>
+                                    <Form.Control id='formLyric' as="textarea" rows={8} 
+                                    placeholder="Insira a letra da musica" resize='none' required/>
+                                </Form.Group>
+                                <Button variant="outline-danger" size="lg" block onClick={() => setLgShow(false)}>Cancelar</Button>
+                                <Button variant="outline-success" size="lg" block onClick={() => upNewMusic()}>Adicionar</Button>
+                            </Form>
                         </Modal.Body>
                     </Modal>
                 </>

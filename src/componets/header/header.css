@@ -12,6 +12,10 @@ body{
   opacity: 0.9;
 }
 
+a.logoHeader{
+  padding: 10px;
+}
+
 .logoHeader{
   object-fit: contain;
   margin-right: auto;
