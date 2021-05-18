@@ -3,6 +3,7 @@ import firebase from '../../../fireBaseConnection'
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import Music from './musica/PageMusic.js'
+import iconClose from '../../../assets/iconClose.png'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
@@ -90,12 +91,14 @@ export default function Musicas(){
         }
         setLgShow(false)
     }
+
     async function loadMusics(album) {
         await firebase.firestore().collection(album)
         .onSnapshot((music) => {
             let temp = []; 
             music.forEach((music) => {
                 temp.push({
+                    id: music.id,
                     curtidas: music.data().curtidas,
                     iframe: music.data().iframe,
                     lyric: music.data().lyric,
@@ -106,6 +109,18 @@ export default function Musicas(){
                 setAllMusicEvolve(temp)
             else if (album === 'origins')
                 setAllMusicOrigins(temp);
+        })
+    }
+
+    async function remove(id, album){
+        await firebase.firestore().collection(album)
+        .doc(id)
+        .delete()
+        .then(() => {
+            toast.sucess("Apagado")
+        })
+        .catch((error) => {
+            toast.error(error)
         })
     }
 
@@ -139,15 +154,18 @@ export default function Musicas(){
                                     return (
                                         <SwiperSlide>
                                             <div id='cardMusic'>
-                                                <h4 className='titleMusic' onClick={() => {
-                                                    setPageMusic(true)
-                                                    setMusicForPage({title: allMusicsEvolve.title, 
-                                                        lyric: allMusicsEvolve.lyric, 
-                                                        iframe: allMusicsEvolve.iframe, 
-                                                        album: 'evolve'})
-                                                    }}>
-                                                    {allMusicsEvolve.title}
-                                                </h4>
+                                                <div className='headerCard'> 
+                                                    <h4 className='titleMusic' onClick={() => {
+                                                        setPageMusic(true)
+                                                        setMusicForPage({title: allMusicsEvolve.title, 
+                                                            lyric: allMusicsEvolve.lyric, 
+                                                            iframe: allMusicsEvolve.iframe, 
+                                                            album: 'evolve'})
+                                                        }}>
+                                                        {allMusicsEvolve.title}
+                                                    </h4>
+                                                    <img src={iconClose} alt="icon delete" onClick={() => remove(allMusicsEvolve.id, "evolve")}></img>
+                                                </div>
                                                 <iframe className='frameMusic' 
                                                     src={`https://www.youtube.com/embed/${allMusicsEvolve.iframe}`}
                                                     title="YouTube video player" frameborder="0"
@@ -176,17 +194,18 @@ export default function Musicas(){
                                     return (
                                         <SwiperSlide>
                                             <div id='cardMusic'>
-                                                <h4 className='titleMusic' 
-                                                    onClick={() => {
-                                                    setPageMusic(true)
-                                                    setMusicForPage({title: allMusicsOrigins.title, 
-                                                        lyric: allMusicsOrigins.lyric, 
-                                                        iframe: allMusicsOrigins.iframe, 
-                                                        album: 'origins'})
-                                                    }
-                                                }>
-                                                    {allMusicsOrigins.title}
-                                                </h4>
+                                            <div className='headerCard'> 
+                                                    <h4 className='titleMusic' onClick={() => {
+                                                        setPageMusic(true)
+                                                        setMusicForPage({title: allMusicsOrigins.title, 
+                                                            lyric: allMusicsOrigins.lyric, 
+                                                            iframe: allMusicsOrigins.iframe, 
+                                                            album: 'evolve'})
+                                                        }}>
+                                                        {allMusicsOrigins.title}
+                                                    </h4>
+                                                    <img src={iconClose} alt="icon delete" onClick={() => remove(allMusicsOrigins.id, "origins")}></img>
+                                                </div>
                                                 <iframe className='frameMusic' src={`https://www.youtube.com/embed/${allMusicsOrigins.iframe}`}
                                                     title="YouTube video player" frameborder="0" 
                                                     allow="accelerometer; autoplay; clipboard-write; 

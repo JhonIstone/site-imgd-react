@@ -21,11 +21,11 @@ export default function Fotos(){
                 temp.push({
                     link: url.data().link
                 })
-                console.log(url)
             })
             setAllImages(temp)
         })
     }
+
     async function upUrlImages(url){
         await firebase.firestore().collection("imagens")
         .add({
@@ -59,7 +59,6 @@ export default function Fotos(){
         getUrlImages()
     }, [])
 
-
     return (
         <main>
             <div id='buttonGroup' className="buttonGroup">
@@ -69,7 +68,7 @@ export default function Fotos(){
             {allImages.map((image) => {
                 return (
                     <div className='cardImage'>
-                        <img src={image.link} alt="Imagem"/>
+                        <img src={image.link} alt="Imagem" className='image'/>
                     </div>
                 )
             })    

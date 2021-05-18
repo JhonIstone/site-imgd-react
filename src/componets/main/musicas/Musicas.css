@@ -14,6 +14,22 @@
     margin: 0 10px;
 }
 
+.headerCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.headerCard img{
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+}
+
+.headerCard img:hover{
+    cursor: pointer;
+}
+
 .linkTitle{
     color: black;
 }
@@ -33,3 +49,4 @@ section h4{
 section h4:hover{
     cursor: pointer;
 }
+
