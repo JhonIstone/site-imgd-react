@@ -16,6 +16,9 @@ import { Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 
+
+import {toast} from 'react-toastify'
+
 SwiperCore.use([Pagination,Navigation]);
 export default function Musicas(){  
 
@@ -34,23 +37,57 @@ export default function Musicas(){
         adjustedLink = link.slice(index+2, index+13)
         return adjustedLink
     }
-    async function upNewMusic(){
-        var title = document.getElementById("formTitle").value
-        var link = document.getElementById("formLink").value
-        link = adjustLink(link)
-        var lyric = document.getElementById("formLyric").value
-        var option = document.getElementById("inlineFormCustomSelect").value
 
-        await firebase.firestore().collection(option)
-        .add({
-            curtidas: 0,
+    function validateFilds(){
+        let title = document.getElementById("formTitle").value
+        if (title.length === 0){
+            toast.error('Erro, titulo da musica não pode estar vazio!!');
+            return null
+        }
+
+        let link = document.getElementById("formLink").value
+        if (link.length === 0 || link.search("youtube.com") === -1 || link.length < 15){
+            toast.error('Erro, link informado não é valido!!');
+            return null
+        }
+        link = adjustLink(link)
+
+        let lyric = document.getElementById("formLyric").value
+        if (lyric === ' ' || lyric.length < 50){
+            toast.error('Erro com a letra da musica!!');
+            return null
+        }
+
+        let option = document.getElementById("inlineFormCustomSelect").value
+
+        const music = {
+            option: option,
             title: title,
             iframe: link,
             lyric: lyric
-        })
-        .catch((error) => {
-            alert(error)
-        })
+        }
+        
+        return music
+    }
+
+    async function upNewMusic(){
+        let formMusic = validateFilds()
+
+        if (formMusic != null){
+            await firebase.firestore().collection(formMusic.option)
+            .add({
+                curtidas: 0,
+                title: formMusic.title,
+                iframe: formMusic.iframe,
+                lyric: formMusic.lyric
+            })
+            .then(() =>{
+                toast.success('Musica foi adicionada com sucesso');
+            })
+            .catch((error) => {
+                toast.error(error);
+            })
+        }
         setLgShow(false)
     }
     async function loadMusics(album) {
@@ -176,24 +213,24 @@ export default function Musicas(){
                             <Form>
                                 <Form.Group controlId="exampleForm.ControlInput1">
                                     <Form.Label>Titulo da musica</Form.Label>
-                                    <Form.Control id='formTitle' type="text" placeholder="Bad Liar" required/>
+                                    <Form.Control id='formTitle' type="text" placeholder="Bad Liar"/>
                                 </Form.Group>
                                 <Form.Group controlId="exampleForm.ControlInput1">
                                     <Form.Label>Link da musica</Form.Label>
                                     <Form.Control id='formLink' type="text" 
-                                    placeholder="https://www.youtube.com/watch?v=k3zimSRKqNw&ab_" required/>
+                                    placeholder="https://www.youtube.com/watch?v=k3zimSRKqNw&ab_"/>
                                 </Form.Group>
                                 <Form.Row className="align-items-center">
                                     <Form.Label>Album</Form.Label>
-                                    <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom required>
+                                    <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom>
                                             <option value="evolve">Evolve</option>
                                             <option value="origins">Origins</option>
                                     </Form.Control>
                                 </Form.Row>
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Letra da musica</Form.Label>
-                                    <Form.Control id='formLyric' as="textarea" rows={8} 
-                                    placeholder="Insira a letra da musica" resize='none' required/>
+                                    <Form.Control id='formLyric' type='text' as="textarea" rows={8} 
+                                    placeholder="Insira a letra da musica" resize='none'/>
                                 </Form.Group>
                                 <Button variant="outline-danger" size="lg" block onClick={() => setLgShow(false)}>Cancelar</Button>
                                 <Button variant="outline-success" size="lg" block onClick={() => upNewMusic()}>Adicionar</Button>

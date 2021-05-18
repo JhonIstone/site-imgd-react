@@ -11,6 +11,8 @@ import Musicas from './componets/main/musicas/Musicas'
 import Noticias from './componets/main/noticias/Noticias'
 import Fotos from './componets/main/fotos/Fotos'
 
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from 'react-toastify'
 function App(){
     return(
         <div>
@@ -29,6 +31,7 @@ function App(){
                     <Fotos/>
                 </Route>
             </Switch>
+                <ToastContainer autoClose={3000}/>
             <Footer/>
         </div>
     )

@@ -1,11 +1,13 @@
 import './Fotos.css'
 import {useState, useEffect} from 'react'
-import firebase from '../../../fireBaseConnection'
 import Seta from '../../../assets/seta.png'
+import firebase from '../../../fireBaseConnection'
 
 import { Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
+
+import {toast} from 'react-toastify'
 
 export default function Fotos(){
     const [lgShow, setLgShow] = useState(false);
@@ -29,8 +31,11 @@ export default function Fotos(){
         .add({
             link: url
         })
+        .then(() => {
+            toast.success("Foto adicionada com sucesso")
+        })
         .catch((error) => {
-            alert(error)
+            toast.error(error)
         })
     }
     const upNewFoto = async(e)=>{

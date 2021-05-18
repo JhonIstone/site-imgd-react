@@ -1,9 +1,13 @@
+import './Noticias.css'
 import firebase from '../../../fireBaseConnection'
 import {useState, useEffect} from 'react'
+import Seta from '../../../assets/seta.png'
+
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import './Noticias.css'
+
+import {toast} from 'react-toastify'
 
 export default function Noticias(){
 
@@ -35,27 +39,55 @@ export default function Noticias(){
         return adjustedLink
     }
 
-    async function upNewPost(){
-        let title = document.getElementById('formTitle').value
-        let iframe = document.getElementById("formLink").value
+    function validateFild(){
         let rede
-        if (iframe.includes('instagram')){
+
+        let title = document.getElementById('formTitle').value
+        if (title.length === 0){
+            toast.error("O titulo não pode estar vazio")
+            return null
+        }
+        
+        let iframe = document.getElementById("formLink").value
+        if (iframe.includes('instagram') && iframe.length > 15){
             rede = 'insta'
             iframe = adjustLinkInstagram(iframe)
         }
-        else if (iframe.includes('twitter')){
+        else if (iframe.includes('twitter') && iframe.length > 15){
             rede = 'twitter'
             iframe = adjustLinkTwitter(iframe)
         }
-        
-        await firebase.firestore().collection('posts')
-        .add({
+        else{
+            toast.error("Informe um link de post valido")
+            return null
+        }
+
+        const post = {
             title: title,
             iframe: iframe,
             rede: rede
-        })
+        }
+        return post
+    }
+
+    async function upNewPost(){
+
+        const newPost = validateFild()
+        if (newPost != null){
+            await firebase.firestore().collection('posts')
+            .add({
+                title: newPost.title,
+                iframe: newPost.iframe,
+                rede: newPost.rede
+            })
+            .then(() => {
+                toast.success("Post adicionado com sucesso")
+            })
+            .catch((error) => {
+                toast.error(error);
+            })
+        }
         handleClose()
-        window.location.reload();
     }
 
     async function loadPosts() {
@@ -96,7 +128,7 @@ export default function Noticias(){
         <div>
             <header>
                 <div className='headerNovidades'>
-                    <h1>As novidades da sua banda favorita:</h1>
+                    <h1 id='title'>As novidades da sua banda favorita:</h1>
                     <Button variant="outline-secondary" onClick={handleShow}>
                         Adicionar
                     </Button>
@@ -126,6 +158,11 @@ export default function Noticias(){
                             )
                         }
                     })}
+                </div>
+                <div className='scrollTop'>
+                    <a href='#title'>
+                        <img className='seta' src={Seta} alt='setaUp'/>
+                    </a>
                 </div>
             </main>
                 <Modal show={show} onHide={handleClose} animation={false}>
