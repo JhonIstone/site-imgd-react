@@ -1,7 +1,6 @@
 import './Musicas.css'
 import firebase from '../../../fireBaseConnection'
 import {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import Music from './musica/PageMusic.js'
 import iconClose from '../../../assets/iconClose.png'
 
@@ -17,6 +16,8 @@ import { Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 
+import Header from '../../header/Header'
+import Footer from '../../footer/footer'
 
 import {toast} from 'react-toastify'
 
@@ -134,130 +135,134 @@ export default function Musicas(){
     }, []);
 
     return (
-        <main className='mainMusics'>
-            {pageMusic ? (
-                <Music title={musicForPage.title} lyric={musicForPage.lyric} iframe={musicForPage.iframe} 
-                album={musicForPage.album} onClose={() => setPageMusic(false)}/>
-                ) 
-                :
-                <>
-                    {/* List Musics Album Evolve */}
-                    <section className='evolve'>
-                        <div className='headerSection'>
-                            <h1>Evolve</h1>
-                            <Button variant="outline-secondary" onClick={() => setLgShow(true)}>Adiconar Musica</Button>
-                        </div>
-                        <Swiper slidesPerView={3} spaceBetween={60} slidesPerGroup={1} 
-                        loop={true} loopFillGroupWithBlank={true} pagination={{
-                        "clickable": true}} navigation={true} className="mySwiper">
-                            {allMusicsEvolve.map((allMusicsEvolve) => {
-                                    return (
-                                        <SwiperSlide>
-                                            <div id='cardMusic'>
+        <div>
+            <Header/>
+            <main className='mainMusics'>
+                {pageMusic ? (
+                    <Music title={musicForPage.title} lyric={musicForPage.lyric} iframe={musicForPage.iframe} 
+                    album={musicForPage.album} onClose={() => setPageMusic(false)}/>
+                    ) 
+                    :
+                    <>
+                        {/* List Musics Album Evolve */}
+                        <section className='evolve'>
+                            <div className='headerSection'>
+                                <h1>Evolve</h1>
+                                <Button variant="outline-secondary" onClick={() => setLgShow(true)}>Adiconar Musica</Button>
+                            </div>
+                            <Swiper slidesPerView={3} spaceBetween={60} slidesPerGroup={1} 
+                            loop={true} loopFillGroupWithBlank={true} pagination={{
+                            "clickable": true}} navigation={true} className="mySwiper">
+                                {allMusicsEvolve.map((allMusicsEvolve) => {
+                                        return (
+                                            <SwiperSlide>
+                                                <div id='cardMusic'>
+                                                    <div className='headerCard'> 
+                                                        <h4 className='titleMusic' onClick={() => {
+                                                            setPageMusic(true)
+                                                            setMusicForPage({title: allMusicsEvolve.title, 
+                                                                lyric: allMusicsEvolve.lyric, 
+                                                                iframe: allMusicsEvolve.iframe, 
+                                                                album: 'evolve'})
+                                                            }}>
+                                                            {allMusicsEvolve.title}
+                                                        </h4>
+                                                        <img src={iconClose} alt="icon delete" onClick={() => remove(allMusicsEvolve.id, "evolve")}></img>
+                                                    </div>
+                                                    <iframe className='frameMusic' 
+                                                        src={`https://www.youtube.com/embed/${allMusicsEvolve.iframe}`}
+                                                        title="YouTube video player" frameborder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; 
+                                                        encrypted-media; gyroscope; picture-in-picture">
+                                                    </iframe>
+                                                    <p>{allMusicsEvolve.curtidas} Curtidas</p>
+                                                </div>
+                                            </SwiperSlide>
+                                        );
+                                    })
+                                }
+                            </Swiper>
+                        </section>
+                        
+                        {/* List Musics Album Origins */}
+                        <section className='origin'>
+                            <div className='headerSection'>
+                                <h1>Origin</h1>
+                                <Button variant="outline-secondary" onClick={() => setLgShow(true)}>Adiconar Musica</Button>
+                            </div>
+                            <Swiper slidesPerView={3} spaceBetween={60} slidesPerGroup={1} 
+                            loop={true} loopFillGroupWithBlank={true} pagination={{
+                            "clickable": true}} navigation={true} className="mySwiper">
+                            {allMusicsOrigins.map((allMusicsOrigins) => {
+                                        return (
+                                            <SwiperSlide>
+                                                <div id='cardMusic'>
                                                 <div className='headerCard'> 
-                                                    <h4 className='titleMusic' onClick={() => {
-                                                        setPageMusic(true)
-                                                        setMusicForPage({title: allMusicsEvolve.title, 
-                                                            lyric: allMusicsEvolve.lyric, 
-                                                            iframe: allMusicsEvolve.iframe, 
-                                                            album: 'evolve'})
-                                                        }}>
-                                                        {allMusicsEvolve.title}
-                                                    </h4>
-                                                    <img src={iconClose} alt="icon delete" onClick={() => remove(allMusicsEvolve.id, "evolve")}></img>
+                                                        <h4 className='titleMusic' onClick={() => {
+                                                            setPageMusic(true)
+                                                            setMusicForPage({title: allMusicsOrigins.title, 
+                                                                lyric: allMusicsOrigins.lyric, 
+                                                                iframe: allMusicsOrigins.iframe, 
+                                                                album: 'evolve'})
+                                                            }}>
+                                                            {allMusicsOrigins.title}
+                                                        </h4>
+                                                        <img src={iconClose} alt="icon delete" onClick={() => remove(allMusicsOrigins.id, "origins")}></img>
+                                                    </div>
+                                                    <iframe className='frameMusic' src={`https://www.youtube.com/embed/${allMusicsOrigins.iframe}`}
+                                                        title="YouTube video player" frameborder="0" 
+                                                        allow="accelerometer; autoplay; clipboard-write; 
+                                                        encrypted-media; gyroscope; picture-in-picture">
+                                                    </iframe>
+                                                    <p>{allMusicsOrigins.curtidas} Curtidas</p>
                                                 </div>
-                                                <iframe className='frameMusic' 
-                                                    src={`https://www.youtube.com/embed/${allMusicsEvolve.iframe}`}
-                                                    title="YouTube video player" frameborder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; 
-                                                    encrypted-media; gyroscope; picture-in-picture">
-                                                </iframe>
-                                                <p>{allMusicsEvolve.curtidas} Curtidas</p>
-                                            </div>
-                                        </SwiperSlide>
-                                    );
-                                })
-                            }
-                        </Swiper>
-                    </section>
-                    
-                    {/* List Musics Album Origins */}
-                    <section className='origin'>
-                        <div className='headerSection'>
-                            <h1>Origin</h1>
-                            <Button variant="outline-secondary" onClick={() => setLgShow(true)}>Adiconar Musica</Button>
-                        </div>
-                        <Swiper slidesPerView={3} spaceBetween={60} slidesPerGroup={1} 
-                        loop={true} loopFillGroupWithBlank={true} pagination={{
-                        "clickable": true}} navigation={true} className="mySwiper">
-                        {allMusicsOrigins.map((allMusicsOrigins) => {
-                                    return (
-                                        <SwiperSlide>
-                                            <div id='cardMusic'>
-                                            <div className='headerCard'> 
-                                                    <h4 className='titleMusic' onClick={() => {
-                                                        setPageMusic(true)
-                                                        setMusicForPage({title: allMusicsOrigins.title, 
-                                                            lyric: allMusicsOrigins.lyric, 
-                                                            iframe: allMusicsOrigins.iframe, 
-                                                            album: 'evolve'})
-                                                        }}>
-                                                        {allMusicsOrigins.title}
-                                                    </h4>
-                                                    <img src={iconClose} alt="icon delete" onClick={() => remove(allMusicsOrigins.id, "origins")}></img>
-                                                </div>
-                                                <iframe className='frameMusic' src={`https://www.youtube.com/embed/${allMusicsOrigins.iframe}`}
-                                                    title="YouTube video player" frameborder="0" 
-                                                    allow="accelerometer; autoplay; clipboard-write; 
-                                                    encrypted-media; gyroscope; picture-in-picture">
-                                                </iframe>
-                                                <p>{allMusicsOrigins.curtidas} Curtidas</p>
-                                            </div>
-                                        </SwiperSlide>
-                                    );
-                            })}
-                        </Swiper>
-                    </section>
-                    {/* MODAL */}
-                    <Modal
-                        size="lg"
-                        show={lgShow}
-                        onHide={() => setLgShow(false)}
-                        aria-labelledby="example-modal-sizes-title-lg"
-                    >
-                        <Modal.Header closeButton>
-                            <Modal.Title id="example-modal-sizes-title-lg">Nova Musica</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Form>
-                                <Form.Group controlId="exampleForm.ControlInput1">
-                                    <Form.Label>Titulo da musica</Form.Label>
-                                    <Form.Control id='formTitle' type="text" placeholder="Bad Liar"/>
-                                </Form.Group>
-                                <Form.Group controlId="exampleForm.ControlInput1">
-                                    <Form.Label>Link da musica</Form.Label>
-                                    <Form.Control id='formLink' type="text" 
-                                    placeholder="https://www.youtube.com/watch?v=k3zimSRKqNw&ab_"/>
-                                </Form.Group>
-                                <Form.Row className="align-items-center">
-                                    <Form.Label>Album</Form.Label>
-                                    <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom>
-                                            <option value="evolve">Evolve</option>
-                                            <option value="origins">Origins</option>
-                                    </Form.Control>
-                                </Form.Row>
-                                <Form.Group controlId="exampleForm.ControlTextarea1">
-                                    <Form.Label>Letra da musica</Form.Label>
-                                    <Form.Control id='formLyric' type='text' as="textarea" rows={8} 
-                                    placeholder="Insira a letra da musica" resize='none'/>
-                                </Form.Group>
-                                <Button variant="outline-danger" size="lg" block onClick={() => setLgShow(false)}>Cancelar</Button>
-                                <Button variant="outline-success" size="lg" block onClick={() => upNewMusic()}>Adicionar</Button>
-                            </Form>
-                        </Modal.Body>
-                    </Modal>
-                </>
-            }
-        </main>
+                                            </SwiperSlide>
+                                        );
+                                })}
+                            </Swiper>
+                        </section>
+                        {/* MODAL */}
+                        <Modal
+                            size="lg"
+                            show={lgShow}
+                            onHide={() => setLgShow(false)}
+                            aria-labelledby="example-modal-sizes-title-lg"
+                        >
+                            <Modal.Header closeButton>
+                                <Modal.Title id="example-modal-sizes-title-lg">Nova Musica</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Form>
+                                    <Form.Group controlId="exampleForm.ControlInput1">
+                                        <Form.Label>Titulo da musica</Form.Label>
+                                        <Form.Control id='formTitle' type="text" placeholder="Bad Liar"/>
+                                    </Form.Group>
+                                    <Form.Group controlId="exampleForm.ControlInput1">
+                                        <Form.Label>Link da musica</Form.Label>
+                                        <Form.Control id='formLink' type="text" 
+                                        placeholder="https://www.youtube.com/watch?v=k3zimSRKqNw&ab_"/>
+                                    </Form.Group>
+                                    <Form.Row className="align-items-center">
+                                        <Form.Label>Album</Form.Label>
+                                        <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom>
+                                                <option value="evolve">Evolve</option>
+                                                <option value="origins">Origins</option>
+                                        </Form.Control>
+                                    </Form.Row>
+                                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                                        <Form.Label>Letra da musica</Form.Label>
+                                        <Form.Control id='formLyric' type='text' as="textarea" rows={8} 
+                                        placeholder="Insira a letra da musica" resize='none'/>
+                                    </Form.Group>
+                                    <Button variant="outline-danger" size="lg" block onClick={() => setLgShow(false)}>Cancelar</Button>
+                                    <Button variant="outline-success" size="lg" block onClick={() => upNewMusic()}>Adicionar</Button>
+                                </Form>
+                            </Modal.Body>
+                        </Modal>
+                    </>
+                }
+            <Footer/>
+            </main>
+        </div>
     )
 }

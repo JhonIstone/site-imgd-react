@@ -9,6 +9,9 @@ import Form from 'react-bootstrap/Form'
 
 import {toast} from 'react-toastify'
 
+import Header from '../../header/Header'
+import Footer from '../../footer/footer'
+
 export default function Fotos(){
     const [lgShow, setLgShow] = useState(false);
     const [allImages, setAllImages] = useState([]);
@@ -50,7 +53,6 @@ export default function Fotos(){
         e.preventDefault()
         setLgShow(false)
     }
-
     useEffect(()=>{
         document.querySelector('.navLink.Fotos').classList.add('Active')
         document.querySelector('.navLink.Novidades').classList.remove('Active')
@@ -60,43 +62,46 @@ export default function Fotos(){
     }, [])
 
     return (
-        <main>
-            <div id='buttonGroup' className="buttonGroup">
-                <Button variant="dark" onClick={() => setLgShow(true)}>Adiconar Foto</Button>
-            </div>
-            <section className='galery'>
-            {allImages.map((image) => {
-                return (
-                    <div className='cardImage'>
-                        <img src={image.link} alt="Imagem" className='image'/>
-                    </div>
-                )
-            })    
-            }
-            </section>
+        <div>
+            <Header/>
+            <main>
+                <div id='buttonGroup' className="buttonGroup">
+                    <Button variant="dark" onClick={() => setLgShow(true)}>Adiconar Foto</Button>
+                </div>
+                <section className='galery'>
+                {allImages.map((image) => {
+                    return (
+                        <div className='cardImage'>
+                            <img src={image.link} alt="Imagem" className='image'/>
+                        </div>
+                    )
+                })    
+                }
+                </section>
 
-            <div className='scrollTop'>
-                <a href='#buttonGroup'>
-                    <img className='seta' src={Seta} alt='setaUp'/>
-                </a>
-            </div>
-            <Modal size="md" show={lgShow}
-                onHide={() => setLgShow(false)} aria-labelledby="example-modal-sizes-title-lg">
-                <Modal.Header closeButton>
-                    <Modal.Title id="example-modal-sizes-title-lg">Nova Foto</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form onSubmit={onSubmit}>
-                        <Form.Group>
-                            <Form.File id="exampleFormControlFile1" label="Selecione a foto" 
-                            onChange={upNewFoto} accept="image/*"/>
-                        </Form.Group>
-                        <Button variant="outline-danger" size="lg" block onClick={() => setLgShow(false)}>Cancelar</Button>
-                        <Button variant="outline-success" size="lg" block type="submit">Adicionar</Button>
-                    </Form>
-                </Modal.Body>
-            </Modal>
-        </main>
-        
+                <div className='scrollTop'>
+                    <a href='#buttonGroup'>
+                        <img className='seta' src={Seta} alt='setaUp'/>
+                    </a>
+                </div>
+                <Modal size="md" show={lgShow}
+                    onHide={() => setLgShow(false)} aria-labelledby="example-modal-sizes-title-lg">
+                    <Modal.Header closeButton>
+                        <Modal.Title id="example-modal-sizes-title-lg">Nova Foto</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form onSubmit={onSubmit}>
+                            <Form.Group>
+                                <Form.File id="exampleFormControlFile1" label="Selecione a foto" 
+                                onChange={upNewFoto} accept="image/*"/>
+                            </Form.Group>
+                            <Button variant="outline-danger" size="lg" block onClick={() => setLgShow(false)}>Cancelar</Button>
+                            <Button variant="outline-success" size="lg" block type="submit">Adicionar</Button>
+                        </Form>
+                    </Modal.Body>
+                </Modal>
+            </main>
+            <Footer/>
+        </div>
     )
 }

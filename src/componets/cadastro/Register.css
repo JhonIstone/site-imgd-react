@@ -1,0 +1,100 @@
+.linkRegister.Active{
+    border-bottom: 1px solid black;
+}
+
+.mainRegister{
+    width: 100vw;
+    height: 100vh;
+
+    background: url(../../assets/backLogin.png);
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.sectionRegister{
+    margin: auto 10%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    border-radius: 20px;
+
+    padding: 30px 50px;
+}
+
+.sectionRegister img{
+    width: 300px;
+    object-fit: contain;
+}
+
+#myForm input{
+    width: 100%;
+}
+
+.formNome{
+    margin-bottom: 15%;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.formEmail{
+    margin-bottom: 15%;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.formSenha{
+    margin-bottom: 10%;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.groupButtonsNav{
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 10%;
+    margin-bottom: 13%;
+}
+
+.groupButtonsNav a{
+    color: black;
+}
+
+.linkLogin{
+    margin-right: 10%;
+}
+
+.sectionLogo{
+    margin: auto 0;
+    margin-right: 10%;
+}
+
+.sectionLogo img{
+    width: 500px;
+}
+
+.btnEntrar{
+    background-color: black;
+    color: white;
+
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.btnRecuperar{
+    border: solid 1px black;
+    border-radius: 20px;
+
+    padding: 1.5%;
+}
+
+.groupButonsLogin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -9,6 +9,9 @@ import Form from 'react-bootstrap/Form'
 
 import {toast} from 'react-toastify'
 
+import Header from '../../header/Header'
+import Footer from '../../footer/footer'
+
 export default function Noticias(){
 
     const [posts, setPosts] = useState([])
@@ -126,69 +129,73 @@ export default function Noticias(){
     
     return (
         <div>
-            <header>
-                <div className='headerNovidades'>
-                    <h1 id='title'>As novidades da sua banda favorita:</h1>
-                    <Button variant="outline-secondary" onClick={handleShow}>
-                        Adicionar
-                    </Button>
-                </div>
-            </header>
-            <main>
-                <div className='noticias'>
-                    {posts.map((post) => {
-                        if (post.rede === 'twitter') {
-                            return (
-                                <div className='post'>
-                                    <h4>{post.title}</h4>
-                                    <blockquote class="twitter-tweet">
-                                        <a href={`https://twitter.com/idupdatesbra/${post.iframe}?ref_src=twsrc%5Etfw`} />
-                                    </blockquote>
-                                </div>
-                            );
-                        }
-                        else if (post.rede === 'insta') {
-                            return (
-                                <div className='post'>
-                                    <h4>{post.title}</h4>
-                                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`} data-instgrm-version="13">
-                                        <a href={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`} />
-                                    </blockquote>
-                                </div>
-                            )
-                        }
-                    })}
-                </div>
-                <div className='scrollTop'>
-                    <a href='#title'>
-                        <img className='seta' src={Seta} alt='setaUp'/>
-                    </a>
-                </div>
-            </main>
-                <Modal show={show} onHide={handleClose} animation={false}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Nova Publicação</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Titulo da noticia</Form.Label>
-                            <Form.Control id='formTitle' type="text" placeholder="O novo cachorro do ..." required />
-                        </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Link da musica</Form.Label>
-                            <Form.Control id='formLink' type="text"
-                                placeholder="https://www.instagram.com/p/COfnOHeNLXH/?utm_source=ig_web_copy_link" required />
-                        </Form.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="outline-danger" onClick={handleClose}>
-                            Cancelar
-                        </Button>
-                        <Button type='submit' variant="outline-success" onClick={() => upNewPost()}>
+            <Header/>
+            <div>
+                <header>
+                    <div className='headerNovidades'>
+                        <h1 id='title'>As novidades da sua banda favorita:</h1>
+                        <Button variant="outline-secondary" onClick={handleShow}>
                             Adicionar
                         </Button>
-                    </Modal.Footer>
-                </Modal>
+                    </div>
+                </header>
+                <main>
+                    <div className='noticias'>
+                        {posts.map((post) => {
+                            if (post.rede === 'twitter') {
+                                return (
+                                    <div className='post'>
+                                        <h4>{post.title}</h4>
+                                        <blockquote class="twitter-tweet">
+                                            <a href={`https://twitter.com/idupdatesbra/${post.iframe}?ref_src=twsrc%5Etfw`} />
+                                        </blockquote>
+                                    </div>
+                                );
+                            }
+                            else if (post.rede === 'insta') {
+                                return (
+                                    <div className='post'>
+                                        <h4>{post.title}</h4>
+                                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`} data-instgrm-version="13">
+                                            <a href={`https://www.instagram.com/${post.iframe}/?utm_source=ig_embed&amp;utm_campaign=loading`} />
+                                        </blockquote>
+                                    </div>
+                                )
+                            }
+                        })}
+                    </div>
+                    <div className='scrollTop'>
+                        <a href='#title'>
+                            <img className='seta' src={Seta} alt='setaUp'/>
+                        </a>
+                    </div>
+                    <Modal show={show} onHide={handleClose} animation={false}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Nova Publicação</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form.Group controlId="exampleForm.ControlInput1">
+                                <Form.Label>Titulo da noticia</Form.Label>
+                                <Form.Control id='formTitle' type="text" placeholder="O novo cachorro do ..." required />
+                            </Form.Group>
+                            <Form.Group controlId="exampleForm.ControlInput1">
+                                <Form.Label>Link da musica</Form.Label>
+                                <Form.Control id='formLink' type="text"
+                                    placeholder="https://www.instagram.com/p/COfnOHeNLXH/?utm_source=ig_web_copy_link" required />
+                            </Form.Group>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="outline-danger" onClick={handleClose}>
+                                Cancelar
+                            </Button>
+                            <Button type='submit' variant="outline-success" onClick={() => upNewPost()}>
+                                Adicionar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </main>
+                <Footer/>
+            </div>
         </div>
     )
 }
