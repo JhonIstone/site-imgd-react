@@ -14,7 +14,7 @@ function AuthProvider({children}){
                 setUser(JSON.parse(storageUser))
         }
         loadUser()
-    })
+    }, [])
 
     async function signUp(email, password, nome) {
         await firebase.auth().createUserWithEmailAndPassword(email, password)

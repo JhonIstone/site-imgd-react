@@ -1,11 +1,11 @@
 import React from 'react'
 import { Switch } from "react-router-dom";
 
-import Musicas from '../componets/main/musicas/Musicas'
-import Fotos from '../componets/main/fotos/Fotos'
-import Noticias from '../componets/main/noticias/Noticias'
-import Login from '../componets/login/Login'
-import Register from '../componets/cadastro/Register'
+import Musicas from '../pages/main/musicas/Musicas'
+import Fotos from '../pages/main/fotos/Fotos'
+import Noticias from '../pages/main/noticias/Noticias'
+import Login from '../pages/login/Login'
+import Register from '../pages/cadastro/Register'
 import Route from './Routes'
 
 export default function mainRoutes() {

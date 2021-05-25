@@ -12,7 +12,6 @@ export default function RouteWraper(
 
     const { signed } = useContext(AuthContext);
 
-
     if (!signed && isPrivate) {
         return (
             <Redirect to="/Login" />

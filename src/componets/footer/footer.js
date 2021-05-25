@@ -14,15 +14,15 @@ export default function footer(){
             <div className='rightFooter'>
                 <div className='containerRede'> 
                     <img src={Linkedin} alt='Logo Linkedin' className='logoRedes'/> 
-                    <p> <a className='link' href='https://www.linkedin.com/in/pedro-joao/' target='_blank'> predo-joao </a></p> 
+                    <p> <a className='link' href='https://www.linkedin.com/in/pedro-joao/' target='_blank' rel="noreferrer"> predo-joao </a></p> 
                 </div>
                 <div className='containerRede'> 
                     <img src={GitHub} alt='Logo GitHub' className='logoRedes'/> 
-                    <p> <a className='link' href='https://github.com/Jhonistone' target='_blank'> JhonIstone </a></p> 
+                    <p> <a className='link' href='https://github.com/Jhonistone' target='_blank' rel="noreferrer"> JhonIstone </a></p> 
                 </div>
                 <div className='containerRede'> 
                     <img src={Instagram} alt='Logo Instagram' className='logoRedes'/> 
-                    <p> <a className='link' href='https://instagram.com/jhon_istone' target='_blank'> jhon_istone </a></p> 
+                    <p> <a className='link' href='https://instagram.com/jhon_istone' target='_blank' rel="noreferrer"> jhon_istone </a></p> 
                 </div>
             </div>
         </div>

@@ -3,7 +3,6 @@ import 'firebase/firebase-firestore'
 import 'firebase/firebase-auth'
 import 'firebase/firebase-storage'
 
- 
 var firebaseConfig = {
     apiKey: "AIzaSyAbyoXwb55VmkeYZGLqI-8KqN3aHvD1Gd0",
     authDomain: "site-imgd-react-d279f.firebaseapp.com",
@@ -16,6 +15,5 @@ var firebaseConfig = {
 // Initialize Firebase
 if (!firebase.apps.length)
     firebase.initializeApp(firebaseConfig);
-
 
 export default firebase;

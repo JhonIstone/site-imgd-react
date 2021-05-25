@@ -9,8 +9,8 @@ import Form from 'react-bootstrap/Form'
 
 import {toast} from 'react-toastify'
 
-import Header from '../../header/Header'
-import Footer from '../../footer/footer'
+import Header from '../../../componets/header/Header'
+import Footer from '../../../componets/footer/footer'
 
 export default function Fotos(){
     const [lgShow, setLgShow] = useState(false);

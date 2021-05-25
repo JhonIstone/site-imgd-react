@@ -9,8 +9,8 @@ import Form from 'react-bootstrap/Form'
 
 import {toast} from 'react-toastify'
 
-import Header from '../../header/Header'
-import Footer from '../../footer/footer'
+import Header from '../../../componets/header/Header'
+import Footer from '../../../componets/footer/footer'
 
 export default function Noticias(){
 
@@ -147,7 +147,7 @@ export default function Noticias(){
                                     <div className='post'>
                                         <h4>{post.title}</h4>
                                         <blockquote class="twitter-tweet">
-                                            <a href={`https://twitter.com/idupdatesbra/${post.iframe}?ref_src=twsrc%5Etfw`} />
+                                            <a href={`https://twitter.com/idupdatesbra/${post.iframe}?ref_src=twsrc%5Etfw`}/>
                                         </blockquote>
                                     </div>
                                 );
