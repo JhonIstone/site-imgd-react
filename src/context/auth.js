@@ -68,6 +68,12 @@ function AuthProvider({children}){
             })
     }
 
+    async function signOut() {
+        await firebase.auth().signOut();
+        localStorage.removeItem('user');
+        setUser(null);
+    }
+
     function setLocalUser(data){
         localStorage.setItem('user', JSON.stringify(data));
     }
@@ -78,6 +84,7 @@ function AuthProvider({children}){
             user,
             signIn,
             signUp,
+            signOut,
             setUser,
             setLocalUser
         }}>

@@ -7,7 +7,7 @@ body{
   height: 500px;
 }
 
-.nav-pílulas{
+.justify-content-end{
   background-color: black;
   opacity: 0.9;
 }
@@ -32,4 +32,30 @@ a.logoHeader{
 
 .navLink:hover{
   text-decoration: none;
+}
+
+.profile{
+  margin-left: auto;
+  color: white;
+
+  right: 0;
+  position: absolute;
+  z-index: 999;
+}
+
+#signOut{
+  color: white;
+  border: none;
+}
+
+#signOut:hover{
+  font-size: larger;
+}
+
+button#signOut{
+  background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
 }

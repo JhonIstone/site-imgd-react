@@ -1,15 +1,20 @@
 import './header.css'
 import { Link, NavLink } from 'react-router-dom'
+import { useContext } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import Nav from 'react-bootstrap/Nav'
 import BackgroundHeader from '../../assets/back.png'
 import Logo from '../../assets/logo.png'
+import { AuthContext } from '../../context/auth';
 
 export default function Header() {
+
+    const { signOut, user } = useContext(AuthContext)
+
     return (
         <header className='container-header'>
             {/* Barra de menu */}
-            <Nav className='justify-content-end' variant="pílulas" defaultActiveKey="/">
+            <Nav className='justify-content-end' defaultActiveKey="/">
                 <Link to="/Musicas" className='logoHeader'>
                     <img src={Logo} alt='Logo site' className='logoHeader'>
                     </img>
@@ -31,6 +36,9 @@ export default function Header() {
                 </Nav.Item>
             </Nav>
             {/*Fim Barra de menu */}
+            <h6 className='profile'>Bem vindo de volta, {user.nome} 
+                <button id='signOut' onClick={() => signOut()}>Sair</button>
+            </h6>
 
             {/* Carosel Header */}
             <Carousel>

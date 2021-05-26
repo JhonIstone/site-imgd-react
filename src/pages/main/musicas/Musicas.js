@@ -1,28 +1,21 @@
 import './Musicas.css'
 import firebase from '../../../fireBaseConnection'
 import { useState, useEffect, useContext } from 'react'
-import iconClose from '../../../assets/iconClose.png'
 import { AuthContext } from '../../../context/auth';
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css"
-import "swiper/components/navigation/navigation.min.css"
-import SwiperCore, {
-    Pagination, Navigation
-} from 'swiper/core';
 
 import { Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 
 import Header from '../../../componets/header/Header'
 import Footer from '../../../componets/footer/footer'
 import Music from './musica/PageMusic.js'
+import SliderMusics from './SliderMusics'
 
 import { toast } from 'react-toastify'
 
-SwiperCore.use([Pagination, Navigation]);
 export default function Musicas() {
 
     const { user } = useContext(AuthContext)
@@ -143,56 +136,53 @@ export default function Musicas() {
             <main className='mainMusics'>
                 {!pageMusic ? (
                     <>
-                        {allMusics ? (
+                        {allMusics.length > 0 ? (
                             <>
-                            <h1>Musicas</h1>
+                            <div className='infosAndRemove'>
+                                <h1>Musicas</h1>
+                                <OverlayTrigger
+                                key={'top'}
+                                placement={'top'}
+                                overlay={
+                                    <Tooltip id={`tooltip-${'top'}`}>
+                                    Clique no titulo para ir à pagina da musica!
+                                    </Tooltip>
+                                }
+                                >
+                                <Button id='infos' variant="secondary">!</Button>
+                                </OverlayTrigger>
+                            </div>
                             {/* Musicas Evolve */}
                             {allMusics.filter((musica) => {
                                 if (musica.album === 'evolve')
+                                return true 
+                                return false}).length > 0 ?
+                                <SliderMusics musicas={allMusics.filter((musica) => {
+                                    if (musica.album === 'evolve')
+                                        return true 
+                                    return false})} 
+                                    setLgShow = {setLgShow} 
+                                    setPageMusic = {setPageMusic}
+                                    setMusicForPage = {setMusicForPage}
+                                    remove = {remove}
+                                />
+                                :
+                                null
+                            }
+                            {/* Musicas Night Vision */}
+                            {allMusics.filter((musica) => {
+                                if (musica.album === 'night vision')
                                     return true 
                                 return false}).length > 0 ?
-                                <section>
-                                    <div className='headerSection'>
-                                        <h1>Evolve</h1>
-                                        <Button variant="outline-secondary" onClick={() => setLgShow(true)}>Adiconar Musica</Button>
-                                    </div>
-                                    <Swiper slidesPerView={3} spaceBetween={60} slidesPerGroup={1} 
-                                        loop={true} loopFillGroupWithBlank={true} pagination={{
-                                        "clickable": true}} navigation={true} className="mySwiper">
-                                    {allMusics.filter((musica) => {
-                                        if (musica.album === 'evolve')
-                                            return true
-                                        return false
-                                    }).map((musica) => {
-                                        return (
-                                            <SwiperSlide>
-                                                <div id='cardMusic'>
-                                                    <div className='headerCard'> 
-                                                        <h4 className='titleMusic' onClick={() => {
-                                                            setPageMusic(true)
-                                                            setMusicForPage({title: musica.title, 
-                                                                lyric: musica.lyric, 
-                                                                iframe: musica.iframe, 
-                                                                album: musica.album})
-                                                            }}>
-                                                            {musica.title}
-                                                        </h4>
-                                                        <img src={iconClose} alt="icon delete" 
-                                                        onClick={() => remove(musica.id, "evolve")}></img>
-                                                    </div>
-                                                    <iframe className='frameMusic' 
-                                                        src={`https://www.youtube.com/embed/${musica.iframe}`}
-                                                        title="YouTube video player" frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; 
-                                                        encrypted-media; gyroscope; picture-in-picture">
-                                                    </iframe>
-                                                </div>
-                                            </SwiperSlide>
-                                        );
-                                    })   
-                                    }
-                                    </Swiper>
-                                </section>
+                                <SliderMusics musicas={allMusics.filter((musica) => {
+                                    if (musica.album === 'night vision')
+                                        return true 
+                                    return false})} 
+                                    setLgShow = {setLgShow} 
+                                    setPageMusic = {setPageMusic}
+                                    setMusicForPage = {setMusicForPage}
+                                    remove = {remove}
+                                />
                                 :
                                 null
                             }
@@ -202,48 +192,33 @@ export default function Musicas() {
                                 if (musica.album === 'origins')
                                     return true 
                                 return false}).length > 0 ?
-                                <section>
-                                    <div className='headerSection'>
-                                        <h1>Origins</h1>
-                                        <Button variant="outline-secondary" 
-                                        onClick={() => setLgShow(true)}>Adiconar Musica</Button>
-                                    </div>
-                                    <Swiper slidesPerView={3} spaceBetween={60} slidesPerGroup={1} 
-                                        loop={true} loopFillGroupWithBlank={true} pagination={{
-                                        "clickable": true}} navigation={true} className="mySwiper">
-                                    {allMusics.filter((musica) => {
-                                        if (musica.album === 'origins')
-                                            return true
-                                        return false
-                                    }).map((musica) => {
-                                        return (
-                                            <SwiperSlide>
-                                                <div id='cardMusic'>
-                                                    <div className='headerCard'> 
-                                                        <h4 className='titleMusic' onClick={() => {
-                                                            setPageMusic(true)
-                                                            setMusicForPage({title: musica.title, 
-                                                                lyric: musica.lyric, 
-                                                                iframe: musica.iframe, 
-                                                                album: musica.album})
-                                                            }}>
-                                                            {musica.title}
-                                                        </h4>
-                                                        <img src={iconClose} alt="icon delete" onClick={() => remove(musica.id, "evolve")}></img>
-                                                    </div>
-                                                    <iframe className='frameMusic' 
-                                                        src={`https://www.youtube.com/embed/${musica.iframe}`}
-                                                        title="YouTube video player" frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; 
-                                                        encrypted-media; gyroscope; picture-in-picture">
-                                                    </iframe>
-                                                </div>
-                                            </SwiperSlide>
-                                        );
-                                    })   
-                                    }
-                                    </Swiper>
-                                </section>
+                                <SliderMusics musicas={allMusics.filter((musica) => {
+                                    if (musica.album === 'origins')
+                                        return true 
+                                    return false})} 
+                                    setLgShow = {setLgShow} 
+                                    setPageMusic = {setPageMusic}
+                                    setMusicForPage = {setMusicForPage}
+                                    remove = {remove}
+                                />
+                                :
+                                null
+                            }
+
+                            {/* Musicas Smoke and Mirrors */}
+                            {allMusics.filter((musica) => {
+                                if (musica.album === 'smoke and mirrors')
+                                    return true 
+                                return false}).length > 0 ?
+                                <SliderMusics musicas={allMusics.filter((musica) => {
+                                    if (musica.album === 'smoke and mirrors')
+                                        return true 
+                                    return false})} 
+                                    setLgShow = {setLgShow} 
+                                    setPageMusic = {setPageMusic}
+                                    setMusicForPage = {setMusicForPage}
+                                    remove = {remove}
+                                />
                                 :
                                 null
                             }
@@ -289,8 +264,8 @@ export default function Musicas() {
                                 <Form.Control as="select" className="mr-sm-2" id="inlineFormCustomSelect" custom>
                                     <option value="evolve">Evolve</option>
                                     <option value="origins">Origins</option>
-                                    <option value="origins">Night Vision</option>
-                                    <option value="origins">Smoke and Mirrors</option>
+                                    <option value="night vision">Night Vision</option>
+                                    <option value="smoke and mirrors">Smoke and Mirrors</option>
                                 </Form.Control>
                             </Form.Row>
                             <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -303,8 +278,8 @@ export default function Musicas() {
                         </Form>
                     </Modal.Body>
                 </Modal>
-                <Footer />
             </main>
+            <Footer />
         </div>
     )
 }

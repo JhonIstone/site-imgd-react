@@ -30,12 +30,34 @@
     cursor: pointer;
 }
 
+.titleAlbum{
+    text-transform: capitalize;
+}
+    
+.infosAndRemove{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#infos{
+    border-radius: 50%;
+    max-height: 30px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 0.5rem;
+}
+
 .linkTitle{
     color: black;
 }
 .linkTitle:hover{
     text-decoration: none;
 }
+
 
 section iframe{
     width: 400px;
