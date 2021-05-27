@@ -2,6 +2,10 @@
     text-decoration: underline;
 }
 
+strong{
+    font-size:  20px;
+}
+
 .headerNovidades{
     display: flex;
     flex-direction: row;
