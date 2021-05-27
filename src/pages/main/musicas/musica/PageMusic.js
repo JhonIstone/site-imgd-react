@@ -1,10 +1,11 @@
 import './PageMusic.css'
+import Seta from '../../../../assets/seta.png'
 import { Button } from 'react-bootstrap'
 
 export default function PageMusic(props) {
     return (
         <main className='mainPageMusic'>
-                <Button className='buttonVoltar' variant="outline-secondary" 
+                <Button id='buttonVoltar' className='buttonVoltar' variant="outline-secondary" 
                 onClick={() => props.onClose()}>Voltar</Button>
             <div className='pageMusic'>
                 <section className='infos-music'>
@@ -22,6 +23,11 @@ export default function PageMusic(props) {
                         <pre>{props.lyric}</pre>
                     </div>
                 </section>
+            </div>
+            <div className='scrollTop'>
+                <a href='#buttonVoltar'>
+                    <img className='seta' src={Seta} alt='setaUp'/>
+                </a>
             </div>
         </main>
     )
