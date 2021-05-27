@@ -11,6 +11,7 @@ export default function Login(){
     useEffect(() => {
         document.querySelector('.linkLogin').classList.add('Active')
         document.querySelector('.linkRegister').classList.remove('Active')
+        document.querySelector('body').classList.add('background')
     }, [])
 
     function handleSubmit(e){   

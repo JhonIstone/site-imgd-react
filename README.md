@@ -1,33 +1,28 @@
-# Getting Started with Create React App
+#Site Web em React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Site baseado no fandom da banda norte americana Imagine Dragons.
+O site foi feito baseado na banda Imagine Dragons mas tentando deixar o mais genericos possivel, sendo necessario apenenas a troca de imagens e algumas caracteristicas especificas da banda em questão para tornar o site viavel para qualquer outra banda, ou ate para outros propositos.
+O site foi feito com o intuito me ajudar a estudar e praticar as tecnologias front-end com o React Js como tecnogia principal e é a segunda versão do meu primeiro contato com javascript e front-end na primeira versão do site, disponivel em: https://github.com/JhonIstone/ProjetoSiteIMGD
 
-## Available Scripts
+Para este web site foram utilizados as tecnologias: ReactJs, Javascript, Html, Css, Bootstrap, swiperjs, Firebase (para persistencia de dados e autenticação de usuarios).
 
-In the project directory, you can run:
+## Paginas
 
-### `yarn start`
+### Login
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Na tela de login os usuarios ja cadastrados podem fazer login para obter acesso aos recursos do site, atraves do seu email e senha.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Registro
 
-### `yarn test`
+Na tela de registro de usuario usuarios não cadastrados podem se cadastrar informando seu nome, email e senha, tendo assim acesso aos recursos do site.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### / ou Musicas
 
-### `yarn build`
+#### Header fixo
+O header fixo é um painel onde fica a barra de navegação do site, um carousel bootstrap com algumas frases, alem do local para deslogar do usuario, com seu nome.
+Na barra de navegação estão os links para as paginas de Musicas, Fotos e Noticias da banda.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O header é um componente react que esta presente em todas as paginas do site (musicas, fotos, noticias)
 
 ### `yarn eject`
 

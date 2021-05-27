@@ -2,12 +2,16 @@
     border-bottom: 1px solid black;
 }
 
-.mainRegister{
+body.background{
     width: 100vw;
     height: 100vh;
 
-    background: url(../../assets/backLogin.png);
-    background-repeat: no-repeat;
+    background-image: url(../../assets/backLogin.png);
+    object-fit: cover;
+}
+
+.mainRegister{
+    margin: 10% 10%;
 
     display: flex;
     flex-direction: row;
@@ -97,4 +101,36 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px){
+    .mainRegister{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+    }
+
+    .sectionLogo img{
+        margin: auto 10%;
+        margin-top: 10%;
+    }
+
+    .sectionRegister{
+        width: 400px;
+    }
+}
+
+@media screen and (min-width: 1600px){
+    .sectionLogo img{
+        width: 650px;
+
+        margin: auto 10%;
+        margin-top: 10%;
+    }
+
+    .sectionRegister{
+        font-size: x-large;
+    }
 }

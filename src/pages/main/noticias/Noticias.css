@@ -39,3 +39,9 @@ strong{
     text-align: justify;
     text-transform: capitalize;
 }
+
+@media screen and (min-width: 1600px){
+    .post{
+        width: 600px;
+    }
+}

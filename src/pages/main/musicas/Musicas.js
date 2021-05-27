@@ -128,6 +128,7 @@ export default function Musicas() {
         document.querySelector('.navLink.Fotos').classList.remove('Active')
         document.querySelector('.navLink.Novidades').classList.remove('Active')
         document.querySelector('.navLink.Musicas').classList.add('Active')
+        document.querySelector('body').classList.remove('background')
     }, []);
 
     return (
