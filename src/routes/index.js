@@ -11,9 +11,9 @@ import Route from './Routes'
 export default function mainRoutes() {
     return (
         <Switch>
-            <Route exact path="/" component={Login}/>
             <Route exact path="/Login" component={Login}/>
             <Route exact path="/Register" component={Register}/> 
+            <Route exact path="/" component={Musicas}/>
             <Route isPrivate exact path="/Musicas" component={Musicas}/>
             <Route isPrivate exact path="/Fotos" component={Fotos}/>
             <Route isPrivate exact path="/Noticias" component={Noticias}/>

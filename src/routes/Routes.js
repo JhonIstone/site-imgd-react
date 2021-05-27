@@ -20,7 +20,7 @@ export default function RouteWraper(
 
     if (signed && (!isPrivate)) {
         return (
-            <Redirect to="/Musicas" />
+            <Redirect to="/" />
         );
     }
     return (
