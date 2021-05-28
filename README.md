@@ -2,7 +2,7 @@
 
 Site baseado no fandom da banda norte americana Imagine Dragons.
 O site foi feito baseado na banda Imagine Dragons mas tentando deixar o mais genericos possivel, sendo necessario apenenas a troca de imagens e algumas caracteristicas especificas da banda em questão para tornar o site viavel para qualquer outra banda, ou ate para outros propositos.
-O site foi feito com o intuito me ajudar a estudar e praticar as tecnologias front-end com o React Js como tecnogia principal e é a segunda versão do meu primeiro contato com javascript e front-end na primeira versão do site, disponivel em: https://github.com/JhonIstone/ProjetoSiteIMGD
+O site foi feito com o intuito de me ajudar a estudar e praticar as tecnologias front-end com o React Js como tecnogia principal e é a segunda versão do meu primeiro contato com javascript e front-end na primeira versão do site, disponivel em: https://github.com/JhonIstone/ProjetoSiteIMGD
 
 Para este web site foram utilizados as tecnologias: ReactJs, Javascript, Html, Css, Bootstrap, swiperjs, Firebase (para persistencia de dados e autenticação de usuarios).
 Para visitar o site -> https://imaginedragonsfas.netlify.app/
