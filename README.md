@@ -1,4 +1,4 @@
-#Site Web em React
+# Site Web em React
 
 Site baseado no fandom da banda norte americana Imagine Dragons.
 O site foi feito baseado na banda Imagine Dragons mas tentando deixar o mais genericos possivel, sendo necessario apenenas a troca de imagens e algumas caracteristicas especificas da banda em questão para tornar o site viavel para qualquer outra banda, ou ate para outros propositos.
