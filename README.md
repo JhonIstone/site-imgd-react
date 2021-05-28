@@ -39,5 +39,5 @@ A pagina de fotos traz uma biblioteca compartilhada com todos os usuarios com fo
 
 A pagina de noticias trás outro ambiente compartilhado de frames extraidos das redes sociais (instagram, twitter) onde os usuarios podem postar noticias, memes e etc relacionados a banda.
 
-##Footer
+## Footer
 O footer trás alguma informações de contato do desenvolvedor do site.
