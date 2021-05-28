@@ -5,6 +5,7 @@ O site foi feito baseado na banda Imagine Dragons mas tentando deixar o mais gen
 O site foi feito com o intuito me ajudar a estudar e praticar as tecnologias front-end com o React Js como tecnogia principal e é a segunda versão do meu primeiro contato com javascript e front-end na primeira versão do site, disponivel em: https://github.com/JhonIstone/ProjetoSiteIMGD
 
 Para este web site foram utilizados as tecnologias: ReactJs, Javascript, Html, Css, Bootstrap, swiperjs, Firebase (para persistencia de dados e autenticação de usuarios).
+Para visitar o site -> https://imaginedragonsfas.netlify.app/
 
 ## Paginas
 
@@ -24,42 +25,19 @@ Na barra de navegação estão os links para as paginas de Musicas, Fotos e Noti
 
 O header é um componente react que esta presente em todas as paginas do site (musicas, fotos, noticias)
 
-### `yarn eject`
+### Slide Musicas
+Quando o usuario tem uma musica cadastrada é adicionado o component de SliderMusic que retorna uma SwiperSlider do swiperjs onde o usuario pode dar play em frame de video da musica, retirado do yotube, através do icone de X é possivel tambem deletar a musica e clicando no titulo da musica voce é levado a pagina da musica, onde voce encontra a letra, e algumas informações sobre a musica, é feito para ser um local onde os usuarios possam acompanhar a letra da musica enquanto escutam.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Cada nova musica pode ser inserida a seu respectivo album atraves do formulario acionado pelo botao "Adicionar Musica"
+Cada usuario tem sua base de dados de musica pessoal!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### /Fotos
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+A pagina de fotos traz uma biblioteca compartilhada com todos os usuarios com fotos da banda, outras fotos podem ser adicionadas livremente pelos usuarios.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### /Noticias
 
-## Learn More
+A pagina de noticias trás outro ambiente compartilhado de frames extraidos das redes sociais (instagram, twitter) onde os usuarios podem postar noticias, memes e etc relacionados a banda.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##Footer
+O footer trás alguma informações de contato do desenvolvedor do site.
