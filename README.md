@@ -31,6 +31,9 @@ Quando o usuario tem uma musica cadastrada é adicionado o component de SliderMu
 Cada nova musica pode ser inserida a seu respectivo album atraves do formulario acionado pelo botao "Adicionar Musica"
 Cada usuario tem sua base de dados de musica pessoal!
 
+### Adicionar Musica
+Ao adicionar um musica o usuario deve informar um titulo da musica (não pode estar vazio), o url do youtube da musica, escolher o album de destino da musica e inserir a letra da musica (deve ser inserido a letra completa da musica, a letra deve ter ao menos que 50 caracteres)
+
 ### /Fotos
 
 A pagina de fotos traz uma biblioteca compartilhada com todos os usuarios com fotos da banda, outras fotos podem ser adicionadas livremente pelos usuarios.
