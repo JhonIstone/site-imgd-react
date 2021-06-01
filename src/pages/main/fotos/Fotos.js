@@ -65,7 +65,7 @@ export default function Fotos(){
         <div>
             <Header/>
             <main>
-                <strong>ATENÇÃO! Essa é uma pagina de acesso compartilhado, os dados publicados aqui seram vistos por todos os usuarios.</strong>
+                <strong id='strong'>ATENÇÃO! Essa é uma pagina de acesso compartilhado, os dados publicados aqui seram vistos por todos os usuarios.</strong>
                 <div id='buttonGroup' className="buttonGroup">
                     <Button variant="dark" onClick={() => setLgShow(true)}>Adiconar Foto</Button>
                 </div>

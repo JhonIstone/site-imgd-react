@@ -131,7 +131,7 @@ export default function Noticias(){
         <div>
             <Header/>
             <div>
-                <strong>ATENÇÃO! Essa é uma pagina de acesso compartilhado, os dados publicados aqui seram vistos por todos os usuarios.</strong>
+                <strong id='strong'>ATENÇÃO! Essa é uma pagina de acesso compartilhado, os dados publicados aqui seram vistos por todos os usuarios.</strong>
                 <header>
                     <div className='headerNovidades'>
                         <h1 id='title'>As novidades da sua banda favorita:</h1>

@@ -50,3 +50,16 @@ strong{
 .seta{
     transform: rotate(-90deg);
 }
+
+@media screen and (min-width: 1600px){
+    .btn.btn-dark{
+        font-size: xx-large;
+    }
+    #strong{
+        font-size: xx-large;
+    }
+    .cardImage img{
+        width: 800px;
+        max-width: 800px;
+    }
+}

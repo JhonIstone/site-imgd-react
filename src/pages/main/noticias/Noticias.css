@@ -44,4 +44,10 @@ strong{
     .post{
         width: 600px;
     }
+    #strong{
+        font-size: xx-large;
+    }
+    button.btn.btn-outline-secondary{
+        font-size: xx-large;
+    }
 }

@@ -55,3 +55,15 @@
     font-size: 20px;
     text-decoration: none;
 }
+
+@media screen and (min-width: 1600px){
+    .rightFooter{
+        font-size: xx-large;
+    }
+    p.copyright{
+        font-size: xx-large;
+    }
+    img.logoFooter{
+        width: 600px;
+    }
+}
