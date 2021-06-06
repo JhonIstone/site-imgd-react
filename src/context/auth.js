@@ -9,7 +9,7 @@ function AuthProvider({children}){
 
     useEffect(() => {
         function loadUser(){
-            const storageUser = localStorage.getItem('user')
+            const storageUser = localStorage.getItem('usuarioLogado')
             if (storageUser)
                 setUser(JSON.parse(storageUser))
         }
@@ -70,12 +70,12 @@ function AuthProvider({children}){
 
     async function signOut() {
         await firebase.auth().signOut();
-        localStorage.removeItem('user');
+        localStorage.removeItem('usuarioLogado');
         setUser(null);
     }
 
     function setLocalUser(data){
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('usuarioLogado', JSON.stringify(data));
     }
 
     return (
